@@ -48,8 +48,9 @@ def getDocList(pred,city, origin):
     zipUnique = df["ZIP Code"].unique()
     destinations = join_strings(zipUnique, 25)
     responses = []
+    aPI_Key = __YOUR GOOGLE API KEY__
     for d in destinations:
-        x = requests.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations="+d+"&units=imperial&key=AIzaSyB0zu62HSbt9sYI5uop9al0w6svqmzTj6g")
+        x = requests.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations="+d+"&units=imperial&key="+aPI_Key)
         responses.append(json.loads(x.text))
     distanceDict = {"ZIP Code":[], "Distance":[],"Duration":[]}
     for response in responses:
